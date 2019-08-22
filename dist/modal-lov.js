@@ -1295,7 +1295,7 @@ Handlebars.registerPartial('pagination', require('./templates/partials/_paginati
 
       // Create LOV region
       var $modalRegion = self._topApex.jQuery(modalReportTemplate(self._templateData)).appendTo('body')
-      
+
       // Open new modal
       $modalRegion.dialog({
         height: $modalRegion.find('.t-Report-wrap').height() + 150, // + dialog button height
@@ -1686,7 +1686,11 @@ Handlebars.registerPartial('pagination', require('./templates/partials/_paginati
       var self = this
       // If current item in LOV then select that row
       // Else select first row of report
-      var $curRow = self._modalDialog$.find('.t-Report-report tr[data-return="' + self._returnValue + '"]')
+      //Atamanskiy 22.08.2019
+      //var $curRow = self._modalDialog$.find('.t-Report-report tr[data-return="' + self._returnValue + '"]')
+      var ettn_returnValue = self._returnValue.replace(/"/g, '\\"');
+      var $curRow = self._modalDialog$.find('.t-Report-report tr[data-return="' + ettn_returnValue + '"]')
+      //Atamanskiy 22.08.2019
       if ($curRow.length > 0) {
         $curRow.addClass('mark ' + self.options.markClasses)
       } else {
@@ -1961,7 +1965,7 @@ module.exports = HandlebarsCompiler.template({"1":function(container,depth0,help
 // hbsfy compiled Handlebars template
 var HandlebarsCompiler = require('hbsfy/runtime');
 module.exports = HandlebarsCompiler.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, options, alias1=depth0 != null ? depth0 : (container.nullContext || {}), buffer = 
+    var stack1, helper, options, alias1=depth0 != null ? depth0 : (container.nullContext || {}), buffer =
   "            <table cellpadding=\"0\" border=\"0\" cellspacing=\"0\" summary=\"\" class=\"t-Report-report "
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.report : depth0)) != null ? stack1.classes : stack1), depth0))
     + "\" width=\"100%\">\r\n              <tbody>\r\n"
